@@ -6,7 +6,7 @@ import { buttonVariants } from './ui/Button'
 
 const Navbar = () => {
   return (
-    <div
+    <nav
       className='
         fixed
         inset-x-0
@@ -41,7 +41,7 @@ const Navbar = () => {
           Login
         </Link>
       </div>
-    </div>
+    </nav>
   )
 }
 export default Navbar
