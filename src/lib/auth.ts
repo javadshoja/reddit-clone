@@ -18,6 +18,11 @@ const authOptions: AuthOptions = {
       clientSecret: env.GITHUB_SECRET
     })
   ],
+  callbacks: {
+    redirect() {
+      return '/'
+    }
+  },
   session: {
     strategy: 'jwt'
   },
