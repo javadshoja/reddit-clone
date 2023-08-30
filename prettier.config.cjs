@@ -7,6 +7,10 @@ module.exports = {
   jsxSingleQuote: true,
   bracketSpacing: true,
   trailingComma: 'none',
+  plugins: [
+    '@ianvs/prettier-plugin-sort-imports',
+    'prettier-plugin-tailwindcss'
+  ],
   importOrder: [
     '^(react/(.*)$)|^(react$)',
     '^(next/(.*)$)|^(next$)',
@@ -15,6 +19,8 @@ module.exports = {
     '',
     '^types$',
     '^@/types/(.*)$',
+    '^@/db',
+    '^@/db/(.*)$',
     '^@/config/(.*)$',
     '^@/lib/(.*)$',
     '^@/hooks/(.*)$',
@@ -22,6 +28,7 @@ module.exports = {
     '^@/components/(.*)$',
     '^@/styles/(.*)$',
     '^@/app/(.*)$',
+    '^@/(.*)$',
     '',
     '^[./]'
   ],
@@ -30,9 +37,5 @@ module.exports = {
   importOrderBuiltinModulesToTop: true,
   importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
   importOrderMergeDuplicateImports: true,
-  importOrderCombineTypeAndValueImports: true,
-  plugins: [
-    '@ianvs/prettier-plugin-sort-imports',
-    'prettier-plugin-tailwindcss'
-  ]
+  importOrderCombineTypeAndValueImports: true
 }
