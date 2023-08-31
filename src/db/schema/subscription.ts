@@ -4,9 +4,9 @@ export const subscription = pgTable(
   'subscription',
   {
     userId: text('userId').notNull(),
-    subredditId: text('userId').notNull()
+    subredditId: text('subredditId').notNull()
   },
   (table) => ({
-    id: primaryKey(table.userId, table.subredditId)
+    compoundKey: primaryKey(table.userId, table.subredditId)
   })
 )
