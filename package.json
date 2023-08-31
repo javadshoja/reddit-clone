@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "drizzle-kit generate:pg --config=drizzle.config.ts",
-    "db:push": "drizzle-kit push:pg"
+    "postinstall": "drizzle-kit generate:pg",
+    "db:push": "drizzle-kit push:pg",
+    "shadcn:add": "pnpm dlx shadcn-ui@latest add"
   },
   "dependencies": {
     "@auth/core": "^0.12.0",
