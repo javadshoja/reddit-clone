@@ -1,10 +1,14 @@
-import { useEffect } from 'react'
 import Link from 'next/link'
+
+import { getCurrentUser } from '@/services/user'
 
 import { Icons } from './Icons'
 import { buttonVariants } from './ui/Button'
+import UserAccountNav from './UserAccountNav'
 
-const Navbar = () => {
+const Navbar = async () => {
+  const currentUser = await getCurrentUser()
+
   return (
     <nav
       className='
@@ -32,14 +36,16 @@ const Navbar = () => {
         '
       >
         <Link href='/' className='flex items-center gap-2'>
-          <Icons.logo className='h-8 w-8 sm:h-6 sm:w-6' />
-          <p className='hidden text-sm font-medium text-zinc-700 md:block'>
-            Reddit
-          </p>
+          <Icons.logo className='h-9 w-9 sm:h-8 sm:w-8' />
+          <Icons.reddit className='hidden h-[18px] sm:block' />
         </Link>
-        <Link href='/login' className={buttonVariants()}>
-          Login
-        </Link>
+        {currentUser ? (
+          <UserAccountNav currentUser={currentUser} />
+        ) : (
+          <Link href='/login' className={buttonVariants()}>
+            Login
+          </Link>
+        )}
       </div>
     </nav>
   )
