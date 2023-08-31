@@ -21,8 +21,7 @@ const Login = () => {
         <Icons.logo className='mx-auto h-12 w-12' />
         <h1 className='text-2xl font-semibold tracking-tight'>Welcome back</h1>
         <p className='mx-auto max-w-xs text-sm'>
-          By continuing, you are setting up a Reddit account and agree to our
-          User Agreement and Privacy Policy.
+          By continuing, you agree to our User Agreement and Privacy Policy.
         </p>
       </div>
       <AuthForm />
@@ -32,10 +31,11 @@ const Login = () => {
           href='/register'
           className='hover:text-brand text-sm underline underline-offset-4'
         >
-          Sign in
+          Sign Up
         </Link>
       </p>
     </div>
   )
 }
+
 export default Login
