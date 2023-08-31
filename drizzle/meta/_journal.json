@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1693482733416,
+      "tag": "0000_new_gunslinger",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1693482970775,
+      "tag": "0001_chief_whizzer",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1693484510990,
+      "tag": "0002_bumpy_ikaris",
+      "breakpoints": true
+    }
+  ]
+}
