@@ -7,22 +7,26 @@ import { users } from '@/db/schema'
 import { getAuthSession } from './session'
 
 export const getCurrentUser = async () => {
-  const session = await getAuthSession()
+  try {
+    const session = await getAuthSession()
 
-  if (!session?.user?.email) return null
+    if (!session?.user?.email) return null
 
-  const currentUser = await db.query.users.findFirst({
-    where: eq(users.email, session.user.email)
-  })
+    const currentUser = await db.query.users.findFirst({
+      where: eq(users.email, session.user.email)
+    })
 
-  if (!currentUser) return null
+    if (!currentUser) return null
 
-  if (!currentUser.username) {
-    await db
-      .update(users)
-      .set({ username: nanoid(10) })
-      .where(eq(users.id, currentUser.id))
+    if (!currentUser.username) {
+      await db
+        .update(users)
+        .set({ username: nanoid(10) })
+        .where(eq(users.id, currentUser.id))
+    }
+
+    return currentUser
+  } catch (error: any) {
+    throw new Error(error)
   }
-
-  return currentUser
 }
