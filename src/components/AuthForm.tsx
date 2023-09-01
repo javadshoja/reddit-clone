@@ -11,44 +11,28 @@ import { Icons } from './Icons'
 import { Button } from './ui/Button'
 
 enum PROVIDER {
-  NULL,
-  GOOGLE,
-  GITHUB
+  NULL = '',
+  GOOGLE = 'google',
+  GITHUB = 'github'
 }
 
 const AuthForm = () => {
   const [isLoading, setIsLoading] = useState(false)
-  const [loadingProvider, setLoadingProvider] = useState<PROVIDER>(0)
+  const [loadingProvider, setLoadingProvider] = useState<PROVIDER>(
+    PROVIDER.NULL
+  )
   const { toast } = useToast()
 
-  const loginWithGoogle = async () => {
+  const login = async (provider: PROVIDER) => {
     setIsLoading(true)
-    setLoadingProvider(PROVIDER.GOOGLE)
+    setLoadingProvider(provider)
 
     try {
-      await signIn('google')
+      await signIn(provider)
     } catch (error) {
       toast({
         title: 'There was a problem.',
-        description: 'There was an error logging with Google',
-        variant: 'destructive'
-      })
-    } finally {
-      setIsLoading(false)
-      setLoadingProvider(PROVIDER.NULL)
-    }
-  }
-
-  const loginWithGithub = async () => {
-    setIsLoading(true)
-    setLoadingProvider(PROVIDER.GITHUB)
-
-    try {
-      await signIn('github')
-    } catch (error) {
-      toast({
-        title: 'There was a problem.',
-        description: 'There was an error logging with Github',
+        description: `There was an error logging with ${provider}`,
         variant: 'destructive'
       })
     } finally {
@@ -60,7 +44,7 @@ const AuthForm = () => {
   return (
     <div className='flex flex-col justify-center gap-4'>
       <Button
-        onClick={loginWithGoogle}
+        onClick={() => void login(PROVIDER.GOOGLE)}
         isLoading={isLoading}
         size='lg'
         className='w-full'
@@ -73,7 +57,7 @@ const AuthForm = () => {
         Google
       </Button>
       <Button
-        onClick={loginWithGithub}
+        onClick={() => void login(PROVIDER.GITHUB)}
         isLoading={isLoading}
         size='lg'
         className='w-full'

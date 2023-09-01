@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { signOut } from 'next-auth/react'
 
-import { SafeUser } from '@/types'
+import type { SafeUser } from '@/types'
 
 import {
   DropdownMenu,
@@ -21,6 +21,14 @@ type UserAccountNavProps = {
 }
 
 const UserAccountNav: React.FC<UserAccountNavProps> = ({ currentUser }) => {
+  const Logout = async (e: Event) => {
+    e.preventDefault()
+
+    await signOut({
+      callbackUrl: `${window.location.origin}/login`
+    })
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -58,12 +66,7 @@ const UserAccountNav: React.FC<UserAccountNavProps> = ({ currentUser }) => {
         <DropdownMenuSeparator />
 
         <DropdownMenuItem
-          onSelect={(event) => {
-            event.preventDefault()
-            signOut({
-              callbackUrl: `${window.location.origin}/login`
-            })
-          }}
+          onSelect={(e) => void Logout(e)}
           className='cursor-pointer'
         >
           Logout

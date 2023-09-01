@@ -26,7 +26,7 @@ export const getCurrentUser = async () => {
     }
 
     return currentUser
-  } catch (error: any) {
-    throw new Error(error)
+  } catch (error) {
+    if (error instanceof Error) throw error
   }
 }

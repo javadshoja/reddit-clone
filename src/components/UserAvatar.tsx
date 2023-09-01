@@ -1,9 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { AvatarProps } from '@radix-ui/react-avatar'
+import type { AvatarProps } from '@radix-ui/react-avatar'
 
-import { SafeUser } from '@/types'
+import type { SafeUser } from '@/types'
 
 import { Icons } from './Icons'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/Avatar'

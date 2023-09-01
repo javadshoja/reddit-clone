@@ -19,7 +19,7 @@ const Register = () => {
         Already a redditor?{' '}
         <Link
           href='/login'
-          className='hover:text-brand text-sm underline underline-offset-4'
+          className='text-sm underline underline-offset-4 transition duration-300 hover:text-slate-700'
         >
           Log In
         </Link>

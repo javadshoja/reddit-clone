@@ -1,5 +1,5 @@
 import { DrizzleAdapter } from '@auth/drizzle-adapter'
-import { AuthOptions } from 'next-auth'
+import type { AuthOptions } from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
 
