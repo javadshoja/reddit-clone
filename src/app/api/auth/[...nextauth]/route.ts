@@ -1,10 +1,10 @@
-import type { NextRequest, NextResponse } from 'next/server'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 import NextAuth from 'next-auth'
 
 import authOptions from '@/lib/auth'
 
-type Handler = () => Promise<NextResponse | NextRequest>
+type Handler = () => Promise<NextApiRequest | NextApiResponse>
 
 const handler = NextAuth(authOptions) as Handler
 
