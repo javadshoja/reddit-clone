@@ -2,7 +2,7 @@ import { eq } from 'drizzle-orm'
 import { nanoid } from 'nanoid'
 
 import db from '@/db'
-import { user } from '@/db/schema'
+import { users } from '@/db/schema'
 
 import { getAuthSession } from './session'
 
@@ -12,17 +12,17 @@ export const getCurrentUser = async () => {
 
     if (!session?.user?.email) return null
 
-    const currentUser = await db.query.user.findFirst({
-      where: eq(user.email, session.user.email)
+    const currentUser = await db.query.users.findFirst({
+      where: eq(users.email, session.user.email)
     })
 
     if (!currentUser) return null
 
     if (!currentUser.username) {
       await db
-        .update(user)
+        .update(users)
         .set({ username: nanoid(10) })
-        .where(eq(user.id, currentUser.id))
+        .where(eq(users.id, currentUser.id))
     }
 
     return currentUser

@@ -29,6 +29,55 @@
       "when": 1693494102594,
       "tag": "0003_whole_tempest",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1693649969062,
+      "tag": "0004_rare_meltdown",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1693652659636,
+      "tag": "0005_hesitant_swarm",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1693653108772,
+      "tag": "0006_workable_spacker_dave",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1693721207775,
+      "tag": "0007_chemical_annihilus",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1693721582325,
+      "tag": "0008_common_sally_floyd",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1693722417475,
+      "tag": "0009_dry_skreet",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1693724516500,
+      "tag": "0010_yellow_spiral",
+      "breakpoints": true
     }
   ]
 }
