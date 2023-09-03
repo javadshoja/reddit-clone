@@ -1,11 +1,11 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { Loader2 } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 
-import { useToast } from '@/hooks/useToast'
+import { toast } from '@/hooks/useToast'
 
 import { Icons } from './Icons'
 import { Button } from './ui/Button'
@@ -21,7 +21,6 @@ const AuthForm = () => {
   const [loadingProvider, setLoadingProvider] = useState<PROVIDER>(
     PROVIDER.NULL
   )
-  const { toast } = useToast()
 
   const login = async (provider: PROVIDER) => {
     setIsLoading(true)
@@ -45,7 +44,7 @@ const AuthForm = () => {
     <div className='flex flex-col justify-center gap-4'>
       <Button
         onClick={() => void login(PROVIDER.GOOGLE)}
-        isLoading={isLoading}
+        disabled={isLoading}
         size='lg'
         className='w-full'
       >
@@ -58,7 +57,7 @@ const AuthForm = () => {
       </Button>
       <Button
         onClick={() => void login(PROVIDER.GITHUB)}
-        isLoading={isLoading}
+        disabled={isLoading}
         size='lg'
         className='w-full'
       >

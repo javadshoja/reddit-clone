@@ -1,7 +1,3 @@
-import type { InferSelectModel } from 'drizzle-orm'
-
-import type { user } from '@/db/schema'
-
-export type User = InferSelectModel<typeof user>
+import type { User } from '@/db/schema'
 
 export type SafeUser = Pick<User, 'name' | 'email' | 'image'>
