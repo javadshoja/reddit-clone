@@ -5,6 +5,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
+import Providers from '@/components/ui/Providers'
 import { Toaster } from '@/components/ui/Toaster'
 import Navbar from '@/components/Navbar'
 
@@ -33,7 +34,7 @@ export default function RootLayout({
         {authModal}
 
         <div className='container mx-auto h-full max-w-7xl pt-12'>
-          {children}
+          <Providers>{children}</Providers>
         </div>
 
         <Toaster />
