@@ -4,6 +4,7 @@ import { pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 import { commentVotes } from './commentVotes'
 import { posts } from './posts'
 import { subreddits } from './subreddits'
+import { subscriptions } from './subscriptions'
 import { votes } from './votes'
 
 export const users = pgTable('user', {
@@ -27,5 +28,7 @@ export const usersRelations = relations(users, ({ many }) => ({
 
   votes: many(votes),
 
-  commentVotes: many(commentVotes)
+  commentVotes: many(commentVotes),
+
+  subscriptions: many(subscriptions)
 }))
