@@ -9,13 +9,13 @@ import { Icons } from './Icons'
 import { Avatar, AvatarFallback } from './ui/Avatar'
 
 interface UserAvatarProps extends AvatarProps {
-  currentUser: Omit<SafeUser, 'email'>
+  currentUser: Omit<SafeUser, 'email'> | null | undefined
 }
 
 const UserAvatar: React.FC<UserAvatarProps> = ({ currentUser, ...props }) => {
   return (
     <Avatar {...props}>
-      {currentUser.image ? (
+      {currentUser?.image ? (
         <Image
           fill
           src={currentUser.image}
