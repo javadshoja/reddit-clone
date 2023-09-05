@@ -9,13 +9,13 @@ import { getCurrentUser } from '@/services/user'
 import MiniCreatePost from '@/components/MiniCreatePost'
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from '@/config'
 
-type pageProps = {
+type SubredditPageProps = {
   params: {
     slug: string
   }
 }
 
-const SubredditPage: React.FC<pageProps> = async ({ params }) => {
+const SubredditPage: React.FC<SubredditPageProps> = async ({ params }) => {
   const currentUser = await getCurrentUser()
 
   const { slug } = params
