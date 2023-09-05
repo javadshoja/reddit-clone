@@ -1,35 +1,38 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: true,
+    project: true
   },
-  plugins: ["@typescript-eslint", "tailwindcss"],
+  plugins: ['@typescript-eslint', 'tailwindcss', '@tanstack/query'],
   extends: [
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended-type-checked",
-    "prettier",
-    "plugin:tailwindcss/recommended",
+    'next/core-web-vitals',
+    'plugin:@typescript-eslint/recommended-type-checked',
+    'prettier',
+    'plugin:tailwindcss/recommended',
+    'plugin:@tanstack/eslint-plugin-query/recommended'
   ],
   rules: {
-    "@typescript-eslint/consistent-type-imports": [
-      "warn",
+    '@typescript-eslint/consistent-type-imports': [
+      'warn',
       {
-        prefer: "type-imports",
-        fixStyle: "inline-type-imports",
-      },
+        prefer: 'type-imports',
+        fixStyle: 'inline-type-imports'
+      }
     ],
-    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    '@tanstack/query/exhaustive-deps': 'error',
+    '@tanstack/query/prefer-query-object-syntax': 'error'
   },
   settings: {
     tailwindcss: {
-      callees: ["cn"],
-      config: "./tailwind.config.ts",
+      callees: ['cn'],
+      config: './tailwind.config.ts'
     },
     next: {
-      rootDir: ["./"],
-    },
-  },
+      rootDir: ['./']
+    }
+  }
 }
 
 module.exports = config
