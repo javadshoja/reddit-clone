@@ -163,8 +163,6 @@ const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     },
     onSuccess: () => {
       const newPathname = pathname.split('/').slice(0, -1).join('/')
-      console.log('🚀 ~ file: Editor.tsx:163 ~ pathname:', pathname)
-      console.log('🚀 ~ file: Editor.tsx:163 ~ newPathname:', newPathname)
       router.push(newPathname)
 
       router.refresh()
@@ -199,7 +197,7 @@ const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       <form
         id='subreddit-form-post'
         className='w-fit'
-        onSubmit={() => void handleSubmit(onSubmit)}
+        onSubmit={void handleSubmit(onSubmit)}
       >
         <div className='prose prose-stone dark:prose-invert'>
           <TextareaAutoSize
