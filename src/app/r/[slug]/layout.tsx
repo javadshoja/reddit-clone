@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { format } from 'date-fns'
@@ -7,6 +8,7 @@ import { and, eq, sql } from 'drizzle-orm'
 import db from '@/db'
 import { subreddits, subscriptions } from '@/db/schema'
 import { getCurrentUser } from '@/services/user'
+import { buttonVariants } from '@/components/ui/Button'
 import SubscribeLeaveToggle from '@/components/SubscribeLeaveToggle'
 
 type SubredditLayoutProps = {
@@ -95,6 +97,16 @@ const SubredditLayout: React.FC<SubredditLayoutProps> = async ({
                 isSubscribed={isSubscribed}
               />
             )}
+
+            <Link
+              href={`/r/${slug}/submit`}
+              className={buttonVariants({
+                variant: 'outline',
+                className: 'mb-6 w-full'
+              })}
+            >
+              Create post
+            </Link>
           </dl>
         </div>
       </div>
