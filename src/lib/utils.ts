@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { clsx, type ClassValue } from 'clsx'
 import { formatDistanceToNowStrict } from 'date-fns'
 import locale from 'date-fns/locale/en-US'
@@ -29,6 +30,7 @@ const formatDistanceLocale = {
 function formatDistance(
   token: string,
   count: number,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: any = {}
 ): string {
   const result = formatDistanceLocale[

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { and, eq } from 'drizzle-orm'
 import { z } from 'zod'
 

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 'use client'
 
 import React, { useCallback, useEffect, useRef, useState } from 'react'
@@ -25,7 +27,7 @@ const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   const [isMounted, setIsMounted] = useState(false)
 
   const editorRef = useRef<EditorJS>()
-  const _titleRef = useRef<HTMLTextAreaElement>(null)
+  const _titleRef = useRef<HTMLTextAreaElement | null>(null)
 
   const {
     register,
@@ -197,6 +199,7 @@ const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       <form
         id='subreddit-form-post'
         className='w-fit'
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className='prose prose-stone dark:prose-invert'>
@@ -204,7 +207,6 @@ const Editor: React.FC<EditorProps> = ({ subredditId }) => {
             ref={(e) => {
               titleRef(e)
 
-              // @ts-ignore
               _titleRef.current = e
             }}
             {...rest}
