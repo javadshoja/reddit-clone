@@ -39,7 +39,7 @@ export async function POST(req: Request) {
       subredditId
     })
 
-    return new Response('OK')
+    return new Response('Post created successfully.', { status: 201 })
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response('Invalid request data passed.', { status: 422 })
