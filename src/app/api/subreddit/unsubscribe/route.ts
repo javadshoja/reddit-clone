@@ -18,11 +18,13 @@ export async function POST(req: Request) {
 
     const { subredditId } = SubredditSubscriptionValidator.parse(body)
 
+    const subredditId_userId = and(
+      eq(subscriptions.subredditId, subredditId),
+      eq(subscriptions.userId, currentUser.id)
+    )
+
     const subscriptionExists = await db.query.subscriptions.findFirst({
-      where: and(
-        eq(subscriptions.subredditId, subredditId),
-        eq(subscriptions.userId, currentUser.id)
-      )
+      where: subredditId_userId
     })
 
     if (!subscriptionExists) {
@@ -44,16 +46,9 @@ export async function POST(req: Request) {
       })
     }
 
-    await db
-      .delete(subscriptions)
-      .where(
-        and(
-          eq(subscriptions.subredditId, subredditId),
-          eq(subscriptions.userId, currentUser.id)
-        )
-      )
+    await db.delete(subscriptions).where(subredditId_userId)
 
-    return new Response(JSON.stringify(subredditId))
+    return new Response(JSON.stringify(subredditId), { status: 200 })
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response('Invalid request data passed.', { status: 422 })
