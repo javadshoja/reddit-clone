@@ -15,7 +15,9 @@ export const env = createEnv({
     GITHUB_ID: z.string(),
     GITHUB_SECRET: z.string(),
     UPLOADTHING_SECRET: z.string(),
-    UPLOADTHING_APP_ID: z.string()
+    UPLOADTHING_APP_ID: z.string(),
+    REDIS_URL: z.string().url(),
+    REDIS_SECRET: z.string()
   },
 
   /**
@@ -38,7 +40,9 @@ export const env = createEnv({
     GITHUB_ID: process.env.GITHUB_ID,
     GITHUB_SECRET: process.env.GITHUB_SECRET,
     UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
-    UPLOADTHING_APP_ID: process.env.UPLOADTHING_APP_ID
+    UPLOADTHING_APP_ID: process.env.UPLOADTHING_APP_ID,
+    REDIS_URL: process.env.REDIS_URL,
+    REDIS_SECRET: process.env.REDIS_SECRET
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
