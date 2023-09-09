@@ -23,7 +23,8 @@ const config = {
     '@typescript-eslint/ban-ts-comment': ['warn'],
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     '@tanstack/query/exhaustive-deps': 'error',
-    '@tanstack/query/prefer-query-object-syntax': 'error'
+    '@tanstack/query/prefer-query-object-syntax': 'error',
+    'tailwindcss/migration-from-tailwind-2': ['off']
   },
   settings: {
     tailwindcss: {
