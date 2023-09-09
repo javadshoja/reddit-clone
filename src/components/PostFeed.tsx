@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from 'react'
 import { useIntersection } from '@mantine/hooks'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import axios from 'axios'
+import { Loader2 } from 'lucide-react'
 
 import type { User } from '@/db/schema'
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from '@/config'
@@ -96,6 +97,12 @@ const PostFeed: React.FC<PostFeedProps> = ({
           </li>
         )
       })}
+
+      {isFetchingNextPage && (
+        <li className='flex justify-center'>
+          <Loader2 className='h-6 w-6 animate-spin text-zinc-500' />
+        </li>
+      )}
     </ul>
   )
 }
