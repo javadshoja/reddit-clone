@@ -9,8 +9,8 @@ import type { Post, User, Vote } from '@/db/schema'
 import { formatTimeToNow } from '@/lib/utils'
 import type { PartialVote } from '@/types'
 
-import EditorOutput from './EditorOutput'
-import PostVoteClient from './post-vote/PostVoteClient'
+import EditorOutput from '../editor/EditorOutput'
+import PostVoteClient from '../post-vote/PostVoteClient'
 
 type PostProps = {
   post: Post & {

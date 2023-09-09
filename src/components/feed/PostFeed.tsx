@@ -11,7 +11,7 @@ import type { User } from '@/db/schema'
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from '@/config'
 import type { ExtendedPost } from '@/types'
 
-import Post from './Post'
+import Post from '../post/Post'
 
 type PostFeedProps = {
   initialPosts: ExtendedPost[]

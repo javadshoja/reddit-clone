@@ -8,7 +8,7 @@ import db from '@/db'
 import { posts, type Post, type User, type Vote } from '@/db/schema'
 import { redis } from '@/lib/redis'
 import { formatTimeToNow } from '@/lib/utils'
-import EditorOutput from '@/components/EditorOutput'
+import EditorOutput from '@/components/editor/EditorOutput'
 import PostVoteServer from '@/components/post-vote/PostVoteServer'
 import { PostVoteShell } from '@/components/post-vote/PostVoteShell'
 

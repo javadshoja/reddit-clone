@@ -6,7 +6,7 @@ import { eq } from 'drizzle-orm'
 import db from '@/db'
 import { subreddits } from '@/db/schema'
 import { Button } from '@/components/ui/Button'
-import Editor from '@/components/Editor'
+import Editor from '@/components/editor/Editor'
 
 type SubmitPostPageProps = {
   params: {

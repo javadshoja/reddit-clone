@@ -3,8 +3,8 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 
-import CodeRenderer from './renderers/CodeRenderer'
-import ImageRenderer from './renderers/ImageRenderer'
+import CodeRenderer from '../renderers/CodeRenderer'
+import ImageRenderer from '../renderers/ImageRenderer'
 
 const Output = dynamic(
   async () => (await import('editorjs-react-renderer')).default,

@@ -6,8 +6,8 @@ import { desc, eq } from 'drizzle-orm'
 import db from '@/db'
 import { posts, subreddits } from '@/db/schema'
 import { getCurrentUser } from '@/services/user'
-import MiniCreatePost from '@/components/MiniCreatePost'
-import PostFeed from '@/components/PostFeed'
+import PostFeed from '@/components/feed/PostFeed'
+import MiniCreatePost from '@/components/post/MiniCreatePost'
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from '@/config'
 
 type SubredditPageProps = {

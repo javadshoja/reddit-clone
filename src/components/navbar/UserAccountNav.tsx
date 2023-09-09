@@ -13,8 +13,8 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from './ui/DropdownMenu'
-import UserAvatar from './UserAvatar'
+} from '../ui/DropdownMenu'
+import UserAvatar from '../UserAvatar'
 
 type UserAccountNavProps = {
   currentUser: SafeUser

@@ -7,9 +7,9 @@ import { ImageIcon, Link2 } from 'lucide-react'
 
 import type { SafeUser } from '@/types'
 
-import { Button } from './ui/Button'
-import { Input } from './ui/Input'
-import UserAvatar from './UserAvatar'
+import { Button } from '../ui/Button'
+import { Input } from '../ui/Input'
+import UserAvatar from '../UserAvatar'
 
 type MiniCreatePostProps = {
   currentUser: SafeUser | null | undefined

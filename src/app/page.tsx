@@ -2,10 +2,10 @@ import Link from 'next/link'
 
 import { HomeIcon } from 'lucide-react'
 
-import CustomFeed from '@/components/CustomFeed'
-import GeneralFeed from '@/components/GeneralFeed'
-import { buttonVariants } from '@/components/ui/Button'
 import { getCurrentUser } from '@/services/user'
+import { buttonVariants } from '@/components/ui/Button'
+import CustomFeed from '@/components/feed/CustomFeed'
+import GeneralFeed from '@/components/feed/GeneralFeed'
 
 const HomePage = async () => {
   const currentUser = await getCurrentUser()
