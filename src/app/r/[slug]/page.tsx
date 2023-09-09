@@ -1,12 +1,13 @@
 import React from 'react'
 import { notFound } from 'next/navigation'
 
-import { eq } from 'drizzle-orm'
+import { desc, eq } from 'drizzle-orm'
 
 import db from '@/db'
-import { subreddits } from '@/db/schema'
+import { posts, subreddits } from '@/db/schema'
 import { getCurrentUser } from '@/services/user'
 import MiniCreatePost from '@/components/MiniCreatePost'
+import PostFeed from '@/components/PostFeed'
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from '@/config'
 
 type SubredditPageProps = {
@@ -30,7 +31,8 @@ const SubredditPage: React.FC<SubredditPageProps> = async ({ params }) => {
           comments: true,
           subreddit: true
         },
-        limit: INFINITE_SCROLLING_PAGINATION_RESULTS
+        limit: INFINITE_SCROLLING_PAGINATION_RESULTS,
+        orderBy: [desc(posts.createdAt)]
       }
     }
   })
@@ -43,7 +45,12 @@ const SubredditPage: React.FC<SubredditPageProps> = async ({ params }) => {
         r/{subreddit.name}
       </h1>
       <MiniCreatePost currentUser={currentUser} />
-      {/* TODO: show posts in user feed */}
+
+      <PostFeed
+        currentUser={currentUser}
+        initialPosts={subreddit.posts}
+        subredditName={subreddit.name}
+      />
     </>
   )
 }
