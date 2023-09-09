@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
+import { Icons } from '../Icons'
 import AuthForm from './AuthForm'
-import { Icons } from './Icons'
 
 const Register = () => {
   return (

@@ -7,8 +7,8 @@ import { signIn } from 'next-auth/react'
 
 import { toast } from '@/hooks/useToast'
 
-import { Icons } from './Icons'
-import { Button } from './ui/Button'
+import { Icons } from '../Icons'
+import { Button } from '../ui/Button'
 
 enum PROVIDER {
   NULL = '',

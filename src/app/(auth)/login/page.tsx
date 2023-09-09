@@ -4,7 +4,7 @@ import { ChevronLeft } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/Button'
-import Login from '@/components/Login'
+import Login from '@/components/auth/Login'
 
 const LoginPage = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
 
+import Register from '@/components/auth/Register'
 import CloseModal from '@/components/CloseModal'
-import Register from '@/components/Register'
 
 const RegisterModalPage = () => {
   return (

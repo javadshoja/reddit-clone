@@ -4,7 +4,7 @@ import { ChevronLeft } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/Button'
-import Register from '@/components/Register'
+import Register from '@/components/auth/Register'
 
 const RegisterPage = () => {
   return (
