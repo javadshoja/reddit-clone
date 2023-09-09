@@ -2,7 +2,8 @@ import { eq } from 'drizzle-orm'
 import { nanoid } from 'nanoid'
 
 import db from '@/db'
-import { users } from '@/db/schema'
+import { users, type User } from '@/db/schema'
+import { redis } from '@/lib/redis'
 
 import { getAuthSession } from './session'
 
@@ -12,20 +13,32 @@ export const getCurrentUser = async () => {
 
     if (!session?.user?.email) return null
 
-    const currentUser = await db.query.users.findFirst({
-      where: eq(users.email, session.user.email)
-    })
+    const cachedCurrentUser = (await redis.hgetall<User>(
+      `user:${session.user.email}`
+    )) as User
 
-    if (!currentUser) return null
+    const currentUser: User | undefined = cachedCurrentUser
+      ? undefined
+      : await db.query.users.findFirst({
+          where: eq(users.email, session.user.email)
+        })
 
-    if (!currentUser.username) {
+    if (!currentUser && !cachedCurrentUser) return null
+
+    const userId = currentUser?.id ?? cachedCurrentUser.id
+
+    if (!currentUser?.username) {
       await db
         .update(users)
         .set({ username: nanoid(10) })
-        .where(eq(users.id, currentUser.id))
+        .where(eq(users.id, userId))
     }
 
-    return currentUser
+    if (!cachedCurrentUser) {
+      await redis.hset(`user:${session.user.email}`, currentUser!)
+    }
+
+    return currentUser ?? cachedCurrentUser
   } catch (error) {
     if (error instanceof Error) throw error
   }
