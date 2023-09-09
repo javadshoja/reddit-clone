@@ -8,3 +8,7 @@ export type ExtendedPost = Post & {
   votes: Vote[]
   comments: Comment[]
 }
+
+export type VoteType = 'UP' | 'DOWN'
+
+export type PartialVote = Pick<Vote, 'type'>
