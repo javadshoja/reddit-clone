@@ -9,8 +9,7 @@ export const comments = pgTable('comment', {
   id: serial('id').primaryKey(),
   text: text('text').notNull(),
   createdAt: timestamp('createdAt').defaultNow(),
-  replyToId: text('replyToId'),
-  commentId: text('commentId'),
+  replyToId: integer('replyToId'),
 
   authorId: text('authorId')
     .notNull()
@@ -37,10 +36,13 @@ export const commentsRelations = relations(comments, ({ one, many }) => ({
 
   replyTo: one(comments, {
     fields: [comments.replyToId],
-    references: [comments.id]
+    references: [comments.id],
+    relationName: 'replies'
   }),
 
-  replies: many(comments),
+  replies: many(comments, {
+    relationName: 'replies'
+  }),
 
   votes: many(commentVotes)
 }))
