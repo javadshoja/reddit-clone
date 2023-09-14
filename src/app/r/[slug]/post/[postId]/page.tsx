@@ -8,6 +8,7 @@ import db from '@/db'
 import { posts, type Post, type User, type Vote } from '@/db/schema'
 import { redis } from '@/lib/redis'
 import { formatTimeToNow } from '@/lib/utils'
+import CommentSection from '@/components/comment/CommentSection'
 import EditorOutput from '@/components/editor/EditorOutput'
 import PostVoteServer from '@/components/post-vote/PostVoteServer'
 import { PostVoteShell } from '@/components/post-vote/PostVoteShell'
@@ -22,7 +23,7 @@ export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
 
 const PostPage: React.FC<pageProps> = async ({ params }) => {
-  const { postId } = params
+  const postId = parseInt(params.postId)
 
   const cachedPost = (await redis.hgetall(`post:${postId}`)) as CachedPost
 
@@ -34,7 +35,7 @@ const PostPage: React.FC<pageProps> = async ({ params }) => {
     | undefined = cachedPost
     ? undefined
     : await db.query.posts.findFirst({
-        where: eq(posts.id, parseInt(postId)),
+        where: eq(posts.id, postId),
         with: {
           author: true,
           votes: true
@@ -45,7 +46,7 @@ const PostPage: React.FC<pageProps> = async ({ params }) => {
 
   const getPostData = async () => {
     return await db.query.posts.findFirst({
-      where: eq(posts.id, parseInt(postId)),
+      where: eq(posts.id, postId),
       with: {
         votes: true
       }
@@ -71,6 +72,8 @@ const PostPage: React.FC<pageProps> = async ({ params }) => {
         </h2>
 
         <EditorOutput content={post?.content ?? cachedPost.content} />
+
+        <CommentSection postId={post?.id ?? cachedPost.id} />
       </div>
     </div>
   )
