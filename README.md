@@ -9,6 +9,7 @@
 - **Styling:** [Tailwind CSS](https://tailwindcss.com)
 - **UI Library:** [Shadcn UI](https://ui.shadcn.com)
 - **File Uploads:** [Uploadthing](https://uploadthing.com)
+- **Redis:** [Upstash](https://upstash.com)
 
 ## Getting Started
 
