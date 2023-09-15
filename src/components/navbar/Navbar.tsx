@@ -4,6 +4,7 @@ import { getCurrentUser } from '@/services/user'
 
 import { Icons } from '../Icons'
 import { buttonVariants } from '../ui/Button'
+import SearchBar from './SearchBar'
 import UserAccountNav from './UserAccountNav'
 
 const Navbar = async () => {
@@ -16,6 +17,9 @@ const Navbar = async () => {
           <Icons.logo className='h-9 w-9 sm:h-8 sm:w-8' />
           <Icons.reddit className='hidden h-[18px] sm:block' />
         </Link>
+
+        <SearchBar />
+
         {currentUser ? (
           <UserAccountNav currentUser={currentUser} />
         ) : (
