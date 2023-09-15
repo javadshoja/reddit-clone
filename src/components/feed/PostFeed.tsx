@@ -53,7 +53,7 @@ const PostFeed: React.FC<PostFeedProps> = ({
 
   useEffect(() => {
     if (entry?.isIntersecting) {
-      fetchNextPage().catch(() => {})
+      void fetchNextPage()
     }
   }, [entry, fetchNextPage])
 

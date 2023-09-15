@@ -84,7 +84,7 @@ const PostVoteClient: React.FC<PostVoteClientProps> = ({
   })
 
   return (
-    <div className='flex gap-4 pb-4 pr-6 sm:w-20 sm:flex-col sm:gap-0 sm:pb-4'>
+    <div className='flex flex-col pb-4 pr-6 sm:w-20 sm:pb-4'>
       <Button
         onClick={() => void vote('UP')}
         size='sm'

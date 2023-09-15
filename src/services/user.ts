@@ -13,7 +13,7 @@ export const getCurrentUser = async () => {
 
     if (!session?.user?.email) return null
 
-    const cachedCurrentUser = (await redis.hgetall<User>(
+    const cachedCurrentUser = (await redis.hgetall(
       `user:${session.user.email}`
     )) as User
 
@@ -27,7 +27,7 @@ export const getCurrentUser = async () => {
 
     const userId = currentUser?.id ?? cachedCurrentUser.id
 
-    if (!currentUser?.username) {
+    if (!currentUser?.username && !cachedCurrentUser.username) {
       await db
         .update(users)
         .set({ username: nanoid(10) })
@@ -36,6 +36,7 @@ export const getCurrentUser = async () => {
 
     if (!cachedCurrentUser) {
       await redis.hset(`user:${session.user.email}`, currentUser!)
+      await redis.expire(`user:${session.user.email}`, 60 * 60 * 6)
     }
 
     return currentUser ?? cachedCurrentUser

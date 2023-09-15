@@ -70,6 +70,7 @@ export async function PATCH(req: Request) {
         }
 
         await redis.hset(`post:${post.id}`, cachePayload)
+        await redis.expire(`post:${post.id}`, 60 * 60 * 3)
       }
 
       return new Response('Vote updated successfully.', { status: 200 })
@@ -97,6 +98,7 @@ export async function PATCH(req: Request) {
       }
 
       await redis.hset(`post:${post.id}`, cachePayload)
+      await redis.expire(`post:${post.id}`, 60 * 60 * 3)
     }
 
     return new Response('Vote created successfully.', { status: 201 })

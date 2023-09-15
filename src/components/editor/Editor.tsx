@@ -129,7 +129,7 @@ const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     }
 
     if (isMounted) {
-      init().catch(() => {})
+      void init()
 
       return () => {
         editorRef.current?.destroy()
