@@ -16,6 +16,9 @@ type SubredditPageProps = {
   }
 }
 
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
+
 const SubredditPage: React.FC<SubredditPageProps> = async ({ params }) => {
   const currentUser = await getCurrentUser()
 

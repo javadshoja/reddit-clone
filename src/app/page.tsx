@@ -7,6 +7,9 @@ import { buttonVariants } from '@/components/ui/Button'
 import CustomFeed from '@/components/feed/CustomFeed'
 import GeneralFeed from '@/components/feed/GeneralFeed'
 
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
+
 const HomePage = async () => {
   const currentUser = await getCurrentUser()
 
