@@ -58,3 +58,12 @@ export function formatTimeToNow(date: Date): string {
     }
   })
 }
+
+export const getSubredditPath = (pathname: string) => {
+  const splitPath = pathname.split('/')
+
+  if (splitPath.length === 3) return '/'
+  else if (splitPath.length > 3) return `/${splitPath[1]}/${splitPath[2]}`
+  // default path, in case pathname does not match expected format
+  else return '/'
+}
