@@ -10,6 +10,7 @@ import { subreddits, subscriptions } from '@/db/schema'
 import { getCurrentUser } from '@/services/user'
 import { buttonVariants } from '@/components/ui/Button'
 import SubscribeLeaveToggle from '@/components/SubscribeLeaveToggle'
+import ToFeedButton from '@/components/ToFeedButton'
 
 type SubredditLayoutProps = {
   children: React.ReactNode
@@ -59,7 +60,8 @@ const SubredditLayout: React.FC<SubredditLayoutProps> = async ({
 
   return (
     <div className='mx-auto h-full max-w-7xl pt-12 sm:container'>
-      {/* TODO: Button to take us back */}
+      <ToFeedButton />
+
       <div className='grid grid-cols-1 gap-y-4 py-6 md:grid-cols-3 md:gap-x-4'>
         <div className='col-span-2 flex flex-col space-y-6'>{children}</div>
 
