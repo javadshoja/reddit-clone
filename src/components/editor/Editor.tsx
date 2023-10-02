@@ -3,7 +3,7 @@
 'use client'
 
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 import type EditorJS from '@editorjs/editorjs'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -22,7 +22,6 @@ type EditorProps = {
 
 const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   const pathname = usePathname()
-  const router = useRouter()
 
   const [isMounted, setIsMounted] = useState(false)
 
@@ -165,9 +164,8 @@ const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     },
     onSuccess: () => {
       const newPathname = pathname.split('/').slice(0, -1).join('/')
-      router.push(newPathname)
 
-      router.refresh()
+      window.location.assign(newPathname)
 
       return toast({
         title: 'Success',
@@ -199,8 +197,7 @@ const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       <form
         id='subreddit-form-post'
         className='w-fit'
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={(...args) => void handleSubmit(onSubmit)(...args)}
       >
         <div className='prose prose-stone dark:prose-invert'>
           <TextareaAutoSize

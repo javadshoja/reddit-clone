@@ -86,8 +86,7 @@ const UsernameForm: React.FC<UsernameFormProps> = ({ currentUser }) => {
   }
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={(...args) => void handleSubmit(onSubmit)(...args)}>
       <Card>
         <CardHeader>
           <CardTitle>Your username</CardTitle>
