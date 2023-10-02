@@ -90,11 +90,15 @@ const CreateSubredditPage = () => {
           </div>
         </div>
         <div className='flex justify-end gap-4'>
-          <Button variant='secondary' onClick={() => router.back()}>
+          <Button
+            disabled={isLoading}
+            variant='secondary'
+            onClick={() => router.back()}
+          >
             Cancel
           </Button>
           <Button
-            disabled={input.length === 0}
+            disabled={input.length === 0 || isLoading}
             onClick={() => void createCommunity()}
           >
             {isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}{' '}
