@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:dev": "kill-port 3000 && next build",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "drizzle-kit generate:pg",
@@ -83,6 +84,7 @@
     "drizzle-kit": "^0.19.13",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
+    "kill-port-process": "^3.2.1",
     "prettier": "^3.0.2",
     "prettier-plugin-tailwindcss": "^0.5.3"
   }
