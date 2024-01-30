@@ -90,7 +90,7 @@
     "drizzle-kit": "^0.19.13",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
-    "kill-port-process": "^3.2.1",
+    "kill-port": "^2.0.1",
     "prettier": "^3.0.2",
     "prettier-plugin-tailwindcss": "^0.5.3"
   },
