@@ -9,13 +9,13 @@ import { Button } from '@/components/ui/Button'
 import Editor from '@/components/editor/Editor'
 
 type SubmitPostPageProps = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 const SubmitPostPage: React.FC<SubmitPostPageProps> = async ({ params }) => {
-  const { slug } = params
+  const { slug } = await params
 
   const subreddit = await db.query.subreddits.findFirst({
     where: eq(subreddits.name, slug)

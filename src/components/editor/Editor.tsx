@@ -25,7 +25,7 @@ const Editor: React.FC<EditorProps> = ({ subredditId }) => {
 
   const [isMounted, setIsMounted] = useState(false)
 
-  const editorRef = useRef<EditorJS>()
+  const editorRef = useRef<EditorJS | null>(null)
   const _titleRef = useRef<HTMLTextAreaElement | null>(null)
 
   const {

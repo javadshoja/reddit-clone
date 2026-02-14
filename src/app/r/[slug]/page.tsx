@@ -11,9 +11,9 @@ import MiniCreatePost from '@/components/post/MiniCreatePost'
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from '@/config'
 
 type SubredditPageProps = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export const dynamic = 'force-dynamic'
@@ -22,7 +22,7 @@ export const fetchCache = 'force-no-store'
 const SubredditPage: React.FC<SubredditPageProps> = async ({ params }) => {
   const currentUser = await getCurrentUser()
 
-  const { slug } = params
+  const { slug } = await params
 
   const subreddit = await db.query.subreddits.findFirst({
     where: eq(subreddits.name, slug),
