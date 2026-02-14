@@ -14,9 +14,9 @@ import ToFeedButton from '@/components/ToFeedButton'
 
 type SubredditLayoutProps = {
   children: React.ReactNode
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 const SubredditLayout: React.FC<SubredditLayoutProps> = async ({
@@ -25,7 +25,7 @@ const SubredditLayout: React.FC<SubredditLayoutProps> = async ({
 }) => {
   const currentUser = await getCurrentUser()
 
-  const { slug } = params
+  const { slug } = await params
   const subreddit = await db.query.subreddits.findFirst({
     where: eq(subreddits.name, slug),
     with: {

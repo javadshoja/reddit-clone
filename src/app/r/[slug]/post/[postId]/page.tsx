@@ -14,16 +14,17 @@ import PostVoteServer from '@/components/post-vote/PostVoteServer'
 import { PostVoteShell } from '@/components/post-vote/PostVoteShell'
 
 type pageProps = {
-  params: {
+  params: Promise<{
     postId: string
-  }
+  }>
 }
 
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
 
 const PostPage: React.FC<pageProps> = async ({ params }) => {
-  const postId = parseInt(params.postId)
+  const { postId: postIdStr } = await params
+  const postId = parseInt(postIdStr)
 
   const cachedPost = (await redis.hgetall(`post:${postId}`)) as CachedPost
 
